@@ -1,0 +1,10 @@
+{
+  "kitronik.checkButtonPress|block": "button %button|is pressed",
+  "kitronik.integer_position|block": "Set ZIP LED Position xy: %xy",
+  "kitronik.pixel_position|block": "Set ZIP LED Position x: %x|y: %y",
+  "kitronik.run_motor|block": "Run motor for %run_time|ms",
+  "kitronik.x_value|block": "Get x position from %xy",
+  "kitronik.y_value|block": "Get y position from %xy",
+  "kitronik|block": "kitronik",
+  "{id:category}Kitronik": "Kitronik"
+}

@@ -1,0 +1,17 @@
+{
+  "kitronik": "Kitronik blocks",
+  "kitronik.ZIP64Buttons": ":GAME ZIP64 Standard Buttons",
+  "kitronik.checkButtonPress": "Input block for :GAME ZIP64 standard buttons",
+  "kitronik.checkButtonPress|param|button": "press to be checked, eg: Up",
+  "kitronik.integer_position": "Convert integer number to LED Position",
+  "kitronik.integer_position|param|xy": "describe value here, eg: 0",
+  "kitronik.pixel_position": "Functions to operate the :GAME ZIP64 ZIP LEDs\r\n\r\nConvert 8x8 xy Coordinates to LED Position",
+  "kitronik.pixel_position|param|x": "describe value here, eg: 0",
+  "kitronik.pixel_position|param|y": "describe value here, eg: 0",
+  "kitronik.run_motor": "Run vibration motor for a particular length of time",
+  "kitronik.run_motor|param|run_time": "is the length of time the motor will run in ms, eg: 100",
+  "kitronik.x_value": "Convert integer position number to x coordinate",
+  "kitronik.x_value|param|xy": "describe value here, eg: 0",
+  "kitronik.y_value": "Convert integer position number to y coordinate",
+  "kitronik.y_value|param|xy": "describe value here, eg: 0"
+}

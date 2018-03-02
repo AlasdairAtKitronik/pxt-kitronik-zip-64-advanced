@@ -1,5 +1,5 @@
 {
-    "name": "pxt-kitronik-zip64",
+    "name": "pxt-kitronik-zip-64",
     "version": "0.1.2",
     "description": "Blocks for driving the Kitronik :GAME ZIP64",
     "license": "MIT",
@@ -10,8 +10,7 @@
     "files": [
         "README.md",
         "ns.ts",
-        "zip64.ts",
-        "_locales/ja/neopixel-strings.json"
+        "zip64.ts"
     ],
     "testFiles": [
         "tests.ts"

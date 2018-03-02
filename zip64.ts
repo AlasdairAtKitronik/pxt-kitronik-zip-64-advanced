@@ -1,23 +1,17 @@
+namespace kitronik {
+//This is going to become the new :GAME ZIP64 Package!
+
 /**
 *:GAME ZIP64 Standard Buttons
 */
-enum ZIP64Buttons {
-    //% block=Up
-    Up = DigitalPin.P8,
-    //% block=Down
-    Down = DigitalPin.P14,
-    //% block=Left
-    Left = DigitalPin.P12,
-    //% block=Right
-    Right = DigitalPin.P13,
-    //% block=Fire1
-    Fire1 = DigitalPin.P15,
-    //% block=Fire2
-    Fire2 = DigitalPin.P16
+export enum ZIP64Buttons {
+    Up,
+    Down,
+    Left,
+    Right,
+    Fire1,
+    Fire2
 }
-
-namespace kitronik {
-//This is going to become the new :GAME ZIP64 Package!
 	
     /**
      * Functions to operate the :GAME ZIP64 ZIP LEDs
@@ -84,10 +78,51 @@ namespace kitronik {
         //% subcategory=GAME_ZIP64
         //% blockId="check_button_press" block="button %button|is pressed" icon="\uf080"
         export function checkButtonPress(button: ZIP64Buttons): boolean {
-            if (pins.digitalReadPin(button) == 0) {
-                return true;
-            } else {
-                return false;
+            switch (button) {
+            	case ZIP64Buttons.Up:
+	            	if (pins.digitalReadPin(DigitalPin.P8) == 0) {
+	            		return true;
+	            	} else {
+	            		return false;
+	            	}
+	            	break;
+            	case ZIP64Buttons.Down:
+	            	if (pins.digitalReadPin(DigitalPin.P14) == 0) {
+	            		return true;
+	            	} else {
+	            		return false;
+	            	}
+	            	break;
+            	case ZIP64Buttons.Left:
+	            	if (pins.digitalReadPin(DigitalPin.P12) == 0) {
+	            		return true;
+	            	} else {
+	            		return false;
+	            	}
+	            	break;
+            	case ZIP64Buttons.Right:
+	            	if (pins.digitalReadPin(DigitalPin.P13) == 0) {
+	            		return true;
+	            	} else {
+	            		return false;
+	            	}
+	            	break;
+            	case ZIP64Buttons.Fire1:
+	            	if (pins.digitalReadPin(DigitalPin.P15) == 0) {
+	            		return true;
+	            	} else {
+	            		return false;
+	            	}
+	            	break;
+            	case ZIP64Buttons.Fire2:
+	            	if (pins.digitalReadPin(DigitalPin.P16) == 0) {
+	            		return true;
+	            	} else {
+	            		return false;
+	            	}
+	            	break;
+            	default:
+            		return false;
             }
         }
 } 
