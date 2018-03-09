@@ -1,0 +1,14 @@
+{
+    "name": "Untitled",
+    "dependencies": {
+        "core": "*",
+        "radio": "*",
+        "pxt-kitronik-zip-64": "*"
+    },
+    "description": "",
+    "files": [
+        "main.blocks",
+        "main.ts",
+        "README.md"
+    ]
+}

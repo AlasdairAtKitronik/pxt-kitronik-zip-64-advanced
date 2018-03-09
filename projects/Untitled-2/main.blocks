@@ -1,0 +1,8 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <variables></variables>
+  <block type="pxt-on-start" id="H{1E-Nb{~[x]}HPO[W|=" x="0" y="0">
+    <statement name="HANDLER">
+      <block type="button_press_on_eventCPP" id="!C}u1ta2_G4`Yq8_wYo/"></block>
+    </statement>
+  </block>
+</xml>
