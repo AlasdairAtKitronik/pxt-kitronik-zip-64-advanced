@@ -11,9 +11,9 @@
         "README.md",
         "ns.ts",
         "zip64.ts",
-        "zip64.cpp",
         "shims.d.ts",
-        "enums.d.ts"
+        "enums.d.ts",
+        "zip64.cpp"
     ],
     "testFiles": [
         "tests.ts"

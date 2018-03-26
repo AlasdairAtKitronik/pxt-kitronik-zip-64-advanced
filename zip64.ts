@@ -30,19 +30,6 @@ enum ZipLedColors {
 namespace GAME_ZIP64 {
 //This is the :GAME ZIP64 Package
 
-	const MICROBIT_PIN_EVT_FALL = 3;
-	const MICROBIT_ID_IO_P0 = 7;
-	const MICROBIT_ID_IO_P1 = 8;
-	const MICROBIT_ID_IO_P2 = 9;
-	const MICROBIT_ID_IO_P8 = 15;
-	const MICROBIT_ID_IO_P12 = 19;
-	const MICROBIT_ID_IO_P13 = 20;
-	const MICROBIT_ID_IO_P14 = 21;
-	const MICROBIT_ID_IO_P15 = 22;
-	const MICROBIT_ID_IO_P16 = 23;
-	const MICROBIT_ID_IO_P19 = 24;
-	const MICROBIT_ID_IO_P20 = 25;
-
 	/**
 	 * Different modes for RGB or RGB+W ZIP strips
 	 */
@@ -68,13 +55,41 @@ namespace GAME_ZIP64 {
 	}
 
     /**
-     * Do something when one of the :GAME ZIP64 Buttons is pressed
+    *:GAME ZIP64 Button Pins
+    */
+    export enum ZIP64ButtonPins {
+        //% block="Joypad Up (P8)"
+        Up = <number>DAL.MICROBIT_ID_IO_P8,
+        //% block="Joypad Down (P14)"
+        Down = DAL.MICROBIT_ID_IO_P14,
+        //% block="Joypad Left (P12)"
+        Left = DAL.MICROBIT_ID_IO_P12,
+        //% block="Joypad Right (P13)"
+        Right = DAL.MICROBIT_ID_IO_P13,
+        //% block="Fire 1 (P15)"
+        Fire1 = DAL.MICROBIT_ID_IO_P15,
+        //% block="Fire 2 (P16)"
+        Fire2 = DAL.MICROBIT_ID_IO_P16
+    }
+
+    /**
+    *:GAME ZIP64 Button Events
+    */
+    export enum ZIP64ButtonEvents {
+        //% block="down"
+        Down = DAL.MICROBIT_BUTTON_EVT_DOWN,
+        //% block="up"
+        Up = DAL.MICROBIT_BUTTON_EVT_UP,
+        //% block="click"
+        Click = DAL.MICROBIT_BUTTON_EVT_CLICK
+    }
+
+    /**
+     *
      */
-    //% subcategory=Inputs
-    //% blockId="button_press_on_eventCPP" block="on button press"
-    //% weight=93 blockGap=8 shim=GAME_ZIP64::onButtonPressCPP
-    export function onButtonPressCPP(): number {
-        return 0;
+    //% shim=GAME_ZIP64::init
+    function init(): void {
+        return;
     }
 
     /**
@@ -146,10 +161,24 @@ namespace GAME_ZIP64 {
     }
 
     /**
+     * Determines if a :GAME ZIP64 button is pressed
+     * @param button press to be checked
+     */
+    //% subcategory=Inputs
+    //% blockId="zip64_ispressed" block="button %button|is pressed"
+    //% button.fieldEditor="gridpicker" button.fieldOptions.columns=3
+    //% weight=95 blockGap=8
+    export function buttonIsPressed(button: ZIP64ButtonPins): boolean {
+        const pin = <DigitalPin><number>button;
+        pins.setPull(pin, PinPullMode.PullUp);
+        return pins.digitalReadPin(pin) == 0;
+    }
+
+    /**
      * Input block for :GAME ZIP64 standard buttons
      * @param button press to be checked, eg: Up
      */
-    //% subcategory=Inputs
+    //% subcategory=DO_NOT_USE
     //% blockId="check_button_press" block="button %button|is pressed" icon="\uf080"
     //% weight=94 blockGap=8
     export function checkButtonPress(button: ZIP64Buttons): boolean {
@@ -203,32 +232,16 @@ namespace GAME_ZIP64 {
 
     /**
      * Do something when one of the :GAME ZIP64 Buttons is pressed
-     * CURRENTLY NOT WORKING
+     * @param button press to be checked
+     * @param event happening on the button, eg: click
      */
-    //% subcategory=DO_NOT_USE
-    //% blockId="button_press_on_event" block="on button %button|press"
+    //% subcategory=Inputs
+    //% blockId="button_press_on_event" block="on button %button|press %event"
+    //% button.fieldEditor="gridpicker" button.fieldOptions.columns=3
     //% weight=93 blockGap=8
-    export function onButtonPress(button: ZIP64Buttons, handler: Action) {
-    	switch (button) {
-        	case ZIP64Buttons.Up:
-        		control.onEvent(MICROBIT_ID_IO_P8, MICROBIT_PIN_EVT_FALL, handler);
-            	break;
-        	case ZIP64Buttons.Down:
-            	control.onEvent(MICROBIT_ID_IO_P14, MICROBIT_PIN_EVT_FALL, handler);
-            	break;
-        	case ZIP64Buttons.Left:
-            	control.onEvent(MICROBIT_ID_IO_P12, MICROBIT_PIN_EVT_FALL, handler);
-            	break;
-        	case ZIP64Buttons.Right:
-            	control.onEvent(MICROBIT_ID_IO_P13, MICROBIT_PIN_EVT_FALL, handler);
-            	break;
-        	case ZIP64Buttons.Fire1:
-            	control.onEvent(MICROBIT_ID_IO_P15, MICROBIT_PIN_EVT_FALL, handler);
-            	break;
-        	case ZIP64Buttons.Fire2:
-            	control.onEvent(MICROBIT_ID_IO_P16, MICROBIT_PIN_EVT_FALL, handler);
-            	break;
-        }
+    export function onButtonPress(button: ZIP64ButtonPins, event: ZIP64ButtonEvents, handler: Action) {
+        init();
+        control.onEvent(<number>button, <number>event, handler);
     }
 
     export class ZIP64Display {
@@ -494,25 +507,25 @@ namespace GAME_ZIP64 {
             this.setPixelColor(i, rgb);
         }
 
-        /**
-         * Draw an image on the ZIP64 LED display.
-         * @param image
-         * @param rgb RGB color of the LED
-         */
-        //% subcategory=Advanced_Display
-        //% blockId="zip64_draw_grid" block="%string|show ZIP LED image %image|with %rgb=zip_colors"
-        //% weight=65
+        ///**
+        // * Draw an image on the ZIP64 LED display.
+        // * @param image
+        // * @param rgb RGB color of the LED
+        // */
+        ////% subcategory=Advanced_Display
+        ////% blockId="zip64_draw_grid" block="%string|show ZIP LED image %image|with %rgb=zip_colors"
+        ////% weight=65
 
-        showZIPLEDs(image: Array<number>, rgb: number) {
+        //showZIPLEDs(image: Array<number>, rgb: number) {
 
-        	for (let i = 0; i <= 63; i++) {
-        		let led_state = image[i];
-        		if (led_state == 1) {
-        			this.setPixelColor(i, rgb);
-        		}
-        	}
-        	this.show();
-        }
+        //	for (let i = 0; i <= 63; i++) {
+        //		let led_state = image[i];
+        //		if (led_state == 1) {
+        //			this.setPixelColor(i, rgb);
+        //		}
+        //	}
+        //	this.show();
+        //}
 
         /**
          * Send all the changes to the strip.

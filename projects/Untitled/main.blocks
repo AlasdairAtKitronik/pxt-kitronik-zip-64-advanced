@@ -1,9 +1,0 @@
-<xml xmlns="http://www.w3.org/1999/xhtml">
-  <variables></variables>
-  <block type="pxt-on-start" id="t:]fX(of`M!oFCHTepMB" x="0" y="0"></block>
-  <block type="device_forever" id="q?j)F:[l#9;_qJ;@#_?+" x="100" y="0">
-    <statement name="HANDLER">
-      <block type="button_press_on_eventCPP" id="OHPO2^j%u5oMv3iyv1IH"></block>
-    </statement>
-  </block>
-</xml>
