@@ -26,7 +26,7 @@ enum ZipLedColors {
 /**
  * Kitronik blocks have the same colour settings
  */
-//% weight=100 color=#00A654 icon=""
+//% weight=100 color=#00A654 icon="\uf11b"
 namespace GAME_ZIP64 {
 //This is the :GAME ZIP64 Package
 
@@ -330,6 +330,28 @@ namespace GAME_ZIP64 {
             // don't yield to avoid races on initialization
     	}
 
+        /**
+         * Draw an image on the ZIP64 LED display.
+         * @param image
+         * @param rgb RGB color of the LED
+         */
+        //% subcategory=Display
+        //% blockId="zip64_draw_gridCPP" block="%string|show ZIP LED image %image|with %rgb=zip_colors" blockgap=8
+        //% weight=65
+
+        showZIPLEDs(image: Array<string>, rgb: number) {
+            for (let i = 0; i <= 7; i++) {
+                for (let j = 0; j <= 7; j++) {
+                    //let led_state = image[i][j];
+                    let led_state = image[i].substr(j, 1);
+                    if (led_state == '#') {
+                        this.setMatrixColor(j, i, rgb);
+                    }
+                }
+            }
+            this.show();
+        }
+
     	private setPixelColor(pixeloffset: number, rgb: number): void {
             this.setPixelRGB(pixeloffset, rgb);
         }
@@ -507,25 +529,25 @@ namespace GAME_ZIP64 {
             this.setPixelColor(i, rgb);
         }
 
-        ///**
-        // * Draw an image on the ZIP64 LED display.
-        // * @param image
-        // * @param rgb RGB color of the LED
-        // */
-        ////% subcategory=Advanced_Display
-        ////% blockId="zip64_draw_grid" block="%string|show ZIP LED image %image|with %rgb=zip_colors"
-        ////% weight=65
+        /**
+         * Draw an image on the ZIP64 LED display.
+         * @param image
+         * @param rgb RGB color of the LED
+         */
+        //% subcategory=Advanced_Display
+        //% blockId="zip64_draw_grid" block="%string|show ZIP LED image %image|with %rgb=zip_colors"
+        //% weight=65
 
-        //showZIPLEDs(image: Array<number>, rgb: number) {
+        showZIPLEDs(image: Array<number>, rgb: number) {
 
-        //	for (let i = 0; i <= 63; i++) {
-        //		let led_state = image[i];
-        //		if (led_state == 1) {
-        //			this.setPixelColor(i, rgb);
-        //		}
-        //	}
-        //	this.show();
-        //}
+        	for (let i = 0; i <= 63; i++) {
+        		let led_state = image[i];
+        		if (led_state == 1) {
+        			this.setPixelColor(i, rgb);
+        		}
+        	}
+        	this.show();
+        }
 
         /**
          * Send all the changes to the strip.

@@ -8,6 +8,8 @@ using namespace pxt;
 namespace GAME_ZIP64 {
 
     bool initialized = false;
+    int i, j;
+    int led_state;
 
     //%
     void init() {
@@ -24,4 +26,19 @@ namespace GAME_ZIP64 {
 
         initialized = true;
     }
+    #if 0
+    //%
+    void showZIPLEDImage(ImageLiteral image, int rgb) {
+
+        for (let i = 0; i <= 7; i++) {
+            for (let j = 0; j <= 7; j++) {
+                let led_state = image[i][j];
+                if (led_state == 1) {
+                    this.setMatrixColor(j, i, rgb);
+                }
+            }
+        }
+        this.show();
+    }
+    #endif
 }
