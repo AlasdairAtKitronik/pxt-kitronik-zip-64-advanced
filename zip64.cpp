@@ -26,6 +26,16 @@ namespace GAME_ZIP64 {
 
         initialized = true;
     }
+
+    /**
+     * Test CPP defined block
+     */
+    //% subcategory=DO_NOT_USE
+    //% blockId="CPP_est_block" block="this is a test CPP block"
+    //% weight=93 blockGap=8
+    int CPPDefineTest() {
+        return 0; 
+    }
     #if 0
     //%
     void showZIPLEDImage(ImageLiteral image, int rgb) {

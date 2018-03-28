@@ -1,4 +1,5 @@
 {
+  "GAME_ZIP64.CPPDefineTest|block": "this is a test CPP block",
   "GAME_ZIP64.Strip.clear|block": "%strip|clear",
   "GAME_ZIP64.Strip.setBrightness|block": "%strip|set brightness %brightness",
   "GAME_ZIP64.Strip.setMatrixColor|block": "%string|set matrix color at x %x|y %y|to %rgb=zip_colors",
@@ -17,9 +18,11 @@
   "GAME_ZIP64.ZIP64ButtonPins.Right|block": "Joypad Right (P13)",
   "GAME_ZIP64.ZIP64ButtonPins.Up|block": "Joypad Up (P8)",
   "GAME_ZIP64.ZIP64Display.clear|block": "%display|clear",
+  "GAME_ZIP64.ZIP64Display.rotate|block": "%display|rotate ZIP LEDs by %offset",
   "GAME_ZIP64.ZIP64Display.setBrightness|block": "%display|set brightness %brightness",
   "GAME_ZIP64.ZIP64Display.setMatrixColor|block": "%string|set matrix color at x %x|y %y|to %rgb=zip_colors",
   "GAME_ZIP64.ZIP64Display.showColor|block": "%display|show color %rgb=zip_colors",
+  "GAME_ZIP64.ZIP64Display.showRainbow|block": "%display|show rainbow from %startHue|to %endHue",
   "GAME_ZIP64.ZIP64Display.showZIPLEDs|block": "%string|show ZIP LED image %image|with %rgb=zip_colors",
   "GAME_ZIP64.ZIP64Display.show|block": "%display|show",
   "GAME_ZIP64.ZipLedMode.RGBW|block": "RGB+W",
